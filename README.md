@@ -8,14 +8,6 @@ Getting Started
 
     sh run.sh
 
-or
-
-    pip install -r requirements.txt
-
-    export FLASK_ENV=development
-    export FLASK_APP=app.py
-
-    flask run ## on port 5000
 
 Afterwards, see the following endpoints:
 

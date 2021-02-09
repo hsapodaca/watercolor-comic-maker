@@ -11,7 +11,7 @@ xkcd_routes = {
 
 
 def random_xkcd_comic_id() -> int:
-    return random.randint(1, max_xkcd_comic())
+    return random.randint(1, max_xkcd_comic_id())
 
 
 def random_xkcd() -> bytes:
@@ -19,7 +19,7 @@ def random_xkcd() -> bytes:
 
 
 @functools.lru_cache(maxsize=128)
-def max_xkcd_comic():
+def max_xkcd_comic_id():
     r = execute_get(xkcd_routes["recent"])
     json_data = json.loads(r.text)
     max_comic = json_data["num"]
@@ -31,5 +31,4 @@ def xkcd(comic_id: int) -> bytes:
     comic_json = execute_get(xkcd_routes["comic"].format(comic_id)).text
     img_url = json.loads(comic_json)["img"]
     img_stream = execute_get(img_url, stream=True)
-    img_stream.raise_for_status()
     return img_stream.content
