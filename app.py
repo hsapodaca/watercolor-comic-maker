@@ -1,6 +1,7 @@
 import functools
 
-from flask import Flask
+from flask import Flask, url_for
+from werkzeug.utils import redirect
 
 from hsapodaca.src.watercolor import Watercolor
 from hsapodaca.src.http import make_png_response
@@ -21,12 +22,12 @@ def index():
 
 @app.route('/xkcd/random', methods=['GET'])
 def show_xkcd_random():
-    return show_xkcd(random_xkcd_comic_id())
+    return redirect(url_for("show_xkcd", comic_id=random_xkcd_comic_id()))
 
 
 @app.route('/xkcd/random/watercolor', methods=['GET'])
 def show_xkcd_random_watercolor():
-    return show_xkcd_watercolor(random_xkcd_comic_id())
+    return redirect(url_for("show_xkcd_watercolor", comic_id=random_xkcd_comic_id()))
 
 
 @app.route('/xkcd/<int:comic_id>', methods=['GET'])
