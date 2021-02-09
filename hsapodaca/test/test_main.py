@@ -14,24 +14,34 @@ def test_read_main():
 def test_read_comic():
     response = client.get("/xkcd/100")
     assert response.status_code == 200
+    assert response.headers["content-type"] == "image/png"
 
 
 def test_read_comic_watercolor():
     response = client.get("/xkcd/100/watercolor")
     assert response.status_code == 200
+    assert response.headers["content-type"] == "image/png"
 
 
 def test_read_random_comic():
     response = client.get("/xkcd/random")
     assert response.status_code == 200
+    assert response.headers["content-type"] == "image/png"
 
 
 def test_read_random_comic_watercolor():
     response = client.get("/xkcd/random/watercolor")
     assert response.status_code == 200
+    assert response.headers["content-type"] == "image/png"
 
 
 def test_read_comic_nonexistent():
     response = client.get("/xkcd/100000000000")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "Comic not found"}
+
+
+def test_read_comic_zero():
+    response = client.get("/xkcd/0")
     assert response.status_code == 404
     assert response.json() == {"detail": "Comic not found"}
