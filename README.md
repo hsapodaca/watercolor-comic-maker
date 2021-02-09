@@ -20,6 +20,11 @@ Afterwards, see the following endpoints:
 
 * /docs
 
+Run Tests
+---
+
+     python -m pytest hsapodaca/test
+
 Details
 ---
 
