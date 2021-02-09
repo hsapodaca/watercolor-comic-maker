@@ -11,13 +11,14 @@ Getting Started
 
 Afterwards, see the following endpoints:
 
-* http://localhost:5000/xkcd/100
-* http://localhost:5000/xkcd/100/watercolor
+* /xkcd/100
+* /xkcd/100/watercolor
 
 
-* http://localhost:5000/xkcd/random
-* http://localhost:5000/xkcd/random/watercolor
+* /xkcd/random
+* /xkcd/random/watercolor
 
+* /docs
 
 Details
 ---
