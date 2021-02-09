@@ -19,7 +19,7 @@ def random_xkcd() -> bytes:
 
 
 @functools.lru_cache(maxsize=128)
-def max_xkcd_comic_id():
+def max_xkcd_comic_id() -> int:
     r = execute_get(xkcd_routes["recent"])
     json_data = json.loads(r.text)
     max_comic = json_data["num"]

@@ -3,7 +3,7 @@ from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 
 
-def execute_get(path, stream=False):
+def execute_get(path: str, stream: bool = False):
     retry_strategy = Retry(
         total=3,
         status_forcelist=[429, 500, 502, 503, 504],
@@ -13,6 +13,3 @@ def execute_get(path, stream=False):
     s = requests.Session()
     s.mount("http://", adapter)
     return s.get(path, stream=stream)
-
-
-

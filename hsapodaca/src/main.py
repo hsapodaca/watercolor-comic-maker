@@ -15,6 +15,8 @@ def watercolor(comic_id: int) -> bytes:
     return Watercolor(xkcd(comic_id)).render()
 
 
+# Routes
+
 @app.get('/')
 async def index():
     return {'status': 'OK'}
@@ -33,7 +35,7 @@ def show_xkcd_random_watercolor():
 @app.get('/xkcd/{comic_id}')
 def show_xkcd(comic_id: int):
     if comic_id <= max_xkcd_comic_id():
-        return Response(xkcd(comic_id),  media_type="image/png")
+        return Response(xkcd(comic_id), media_type="image/png")
     else:
         raise fastapi.HTTPException(
             status_code=fastapi.status.HTTP_404_NOT_FOUND,

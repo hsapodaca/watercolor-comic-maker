@@ -18,7 +18,7 @@ class Watercolor:
         self.img: Image = Image.open(io.BytesIO(img)).convert("RGB")
         self.DEFAULT_BLEND_RATIO = .5
 
-    def blend_with(self, img2) -> Image:
+    def blend_with(self, img2: Image) -> Image:
         return Image.blend(self.img, img2, self.DEFAULT_BLEND_RATIO)
 
     def background_from_image(self) -> Image:
