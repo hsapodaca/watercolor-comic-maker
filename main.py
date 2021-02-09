@@ -16,7 +16,7 @@ def watercolor(comic_id: int) -> bytes:
 
 
 @app.get('/')
-def index():
+async def index():
     return {'status': 'OK'}
 
 
